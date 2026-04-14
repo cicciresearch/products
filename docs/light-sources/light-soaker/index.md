@@ -4,7 +4,7 @@ Light Soaker systems provide uniform, high-stability illumination for photovolta
 
 They are designed for long-term stability experiments, ISOS protocols, and controlled spectral studies. The system enables precise and reproducible illumination over large areas, making it ideal for both research and industrial environments.
 
-[Download Product Flyer :material-file-download:](../assets/files/Arkeo%20Large%20area%20Light%20Soaker.pdf){ .md-button }
+[Download Product Flyer :material-file-download:](../../assets/files/Arkeo%20Large%20area%20Light%20Soaker.pdf){ .md-button }
 
 ---
 

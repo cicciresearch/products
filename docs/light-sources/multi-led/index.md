@@ -4,7 +4,7 @@ MultiLED is a compact, multi-wavelength illumination system designed for flexibl
 
 It enables precise tuning of the illumination spectrum using multiple independently controlled LED channels, making it ideal for indoor photovoltaics, sensor calibration, and advanced research applications.
 
-[Download Product Flyer :material-file-download:](../assets/files/Arkeo%20Multi%20LED.pdf){ .md-button }
+[Download Product Flyer :material-file-download:](../../assets/files/Arkeo%20Multi%20LED.pdf){ .md-button }
 
 ---
 
