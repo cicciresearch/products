@@ -1,0 +1,92 @@
+site_name: Arkeo Products
+
+theme:
+  name: material
+  icon:
+    annotation: material/arrow-right-circle 
+  features:
+    - navigation.expand
+    - navigation.sections
+    - navigation.instant
+    - navigation.top
+    - navigation.tabs
+    - navigation.path
+    - search.highlight
+    - search.suggest
+    - content.footnote.tooltips
+    - content.code.annotate
+    - content.code.copy
+    - content.image
+    - content.action.copy
+    - content.icons
+  palette:
+    - media: "(prefers-color-scheme)"
+      primary: deep orange
+    
+markdown_extensions:
+  - toc:
+      permalink: true
+      # toc_depth: 1
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: false
+      linenums: false
+      guess_lang: false
+      use_pygments: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - footnotes
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.snippets:
+      base_path: docs
+
+nav:
+  - Products: index.md
+
+  - Light Sources:
+      - Overview: light-sources/index.md
+      - Light Soaker: light-sources/light-soaker/index.md
+      - MultiLED: light-sources/multi-led/index.md
+      - MultiWell: light-sources/multiwell/index.md
+
+  - Environmental Chambers:
+      - Overview: chambers/index.md
+      - Fixture: chambers/fixture/index.md
+      - Chamber XXL: chambers/chamber-xxl/index.md
+      - Chamber M: chambers/chamber-m/index.md
+      - Chamber 4X: chambers/chamber-4x/index.md
+  
+  - Air Unit:
+      - Air Unit: air-unit/index.md
+
+plugins:
+  - search
+  - glightbox:
+      manual: true
+  - macros
+
+extra_javascript:
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - js/katex-init.js
+  - https://cdn.plot.ly/plotly-2.30.0.min.js
+  - tools/eqe-analysis/eqe_tool.js
+
+extra_css:
+  - assets/css/compact-lists.css
+  - assets/css/compact-tables.css
+  - assets/css/extra.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
