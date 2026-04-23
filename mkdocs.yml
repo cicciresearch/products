@@ -67,7 +67,9 @@ nav:
       - Fixture: chambers/fixture/index.md
       - Chamber XXL: chambers/chamber-xxl/index.md
       - Chamber M: chambers/chamber-m/index.md
-      - Chamber 4X: chambers/chamber-4x/index.md
+      - Sample Holders:
+          - Test: test.md
+      
   
   - Air Unit:
       - Air Unit: air-unit/index.md
