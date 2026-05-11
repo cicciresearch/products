@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Example publication using ARKEO for perovskite solar cell stability",
+    "authors": "A. Rossi, L. Bianchi, M. Verdi",
+    "year": 2025,
+    "journal": "Solar Energy Materials and Solar Cells",
+    "doi": "10.0000/example.2025.001",
+    "url": "https://doi.org/10.0000/example.2025.001",
+    "tags": ["ARKEO", "Perovskite", "Stability"],
+    "note": "Mentions Cicci Research instrumentation."
+  },
+  {
+    "title": "LED light soaking protocols for advanced photovoltaic devices",
+    "authors": "J. Smith, P. Conti, R. Neri",
+    "year": 2024,
+    "journal": "Advanced Photovoltaics",
+    "doi": "10.0000/example.2024.002",
+    "url": "https://doi.org/10.0000/example.2024.002",
+    "tags": ["LED Light Soaker", "Photovoltaics", "Aging"],
+    "note": "Uses Cicci Research LED light soaking equipment."
+  }
+]
