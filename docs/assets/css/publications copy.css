@@ -21,7 +21,7 @@
 
 .publications-list {
   display: grid;
-  gap: 0.65rem;
+  gap: 1rem;
 }
 
 .publication-card {
@@ -36,68 +36,53 @@
 }
 
 .publication-year {
-  font-size: 1.05rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--md-primary-fg-color);
-  line-height: 1.25;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.15rem;
-}
-
-.publication-star {
-  color: #d4af37;
-  font-size: 0.95rem;
-  line-height: 1;
 }
 
 .publication-content h2 {
-  margin: 0 0 0.2rem;
-  font-size: 0.9rem;
-  line-height: 1.3;
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
 }
 
-.publication-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  font-size: 0.72rem;
-  opacity: 0.75;
-}
-
-.publication-authors {
-  margin: 0.1rem 0 0.25rem;
-  font-size: 0.8rem;
-  opacity: 0.85;
+.publication-authors,
+.publication-journal,
+.publication-note {
+  margin: 0.25rem 0;
 }
 
 .publication-journal {
   font-style: italic;
 }
 
-.publication-meta span:not(:last-child)::after,
-.publication-meta a:not(:last-child)::after {
-  content: " •";
-  margin-left: 0.25rem;
+.publication-tags {
+  margin-top: 0.7rem;
+}
+
+.publication-tags span {
+  display: inline-block;
+  margin: 0.2rem 0.3rem 0.2rem 0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, transparent);
+  color: var(--md-primary-fg-color);
+  font-size: 0.75rem;
 }
 
 .publication-actions {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   align-items: flex-start;
-  justify-content: flex-end;
 }
 
-
 .publication-actions a {
-  padding: 0.35rem 0.55rem;
-  border-radius: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.4rem;
   background: var(--md-primary-fg-color);
   color: var(--md-primary-bg-color);
-  font-size: 0.72rem;
   font-weight: 600;
-  white-space: nowrap;
 }
 
 .publication-actions small {
@@ -108,12 +93,12 @@
 
 @media (max-width: 900px) {
   .publication-card {
-    grid-template-columns: 55px 1fr;
+    grid-template-columns: 1fr;
   }
 
   .publication-actions {
-    grid-column: 2;
-    justify-content: flex-start;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+    padding-top: 0.8rem;
   }
 }
 
@@ -122,10 +107,4 @@
   font-weight: 600;
   opacity: 0.75;
   margin-bottom: 0.5rem;
-}
-
-.publication-featured {
-  border: 3px solid #e9c708;
-  box-shadow:
-    0 0 18px rgba(201, 162, 39, 0.18);
 }

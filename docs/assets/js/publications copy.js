@@ -43,21 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       .join(", ");
   }
 
-  function getShortAuthors(item) {
-    if (!Array.isArray(item.author) || item.author.length === 0) return "";
-
-    const firstAuthor = item.author[0];
-    const given = firstAuthor.given || "";
-    const family = firstAuthor.family || "";
-    const name = `${given} ${family}`.trim();
-
-    if (item.author.length > 1) {
-      return `${name} et al.`;
-    }
-
-    return name;
-  }
-
   function getJournal(item) {
     return item["container-title"] || item.publisher || item.source || "";
   }
@@ -92,17 +77,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (Array.isArray(item.tags)) return item.tags;
 
     return [];
-  }
-
-  function isFeatured(item) {
-    const note = (item.note || item.extra || "").toLowerCase();
-
-    return (
-      note.includes("featured: true") ||
-      note.includes("featured=true") ||
-      note.includes("featured: yes") ||
-      note.includes("featured=yes")
-    );
   }
 
   function getPublicationType(item) {
@@ -141,16 +115,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   publications = publications.filter(item => getDoi(item));
 
   publications.sort((a, b) => {
-    const featuredA = isFeatured(a) ? 1 : 0;
-    const featuredB = isFeatured(b) ? 1 : 0;
-
-    if (featuredA !== featuredB) {
-      return featuredB - featuredA;
-    }
-
     const yearA = Number(getYear(a)) || 0;
     const yearB = Number(getYear(b)) || 0;
-
     return yearB - yearA;
   });
 
@@ -197,54 +163,61 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
 
       ${filtered.map(item => {
-        const title = escapeHtml(item.title || "Untitled publication");
-        const authors = escapeHtml(getShortAuthors(item));
-        const fullAuthors = escapeHtml(getAuthors(item));
-        const year = escapeHtml(getYear(item));
-        const journal = escapeHtml(getJournal(item));
-        const doi = escapeHtml(getDoi(item));
-        const url = escapeHtml(getUrl(item));
+      const title = escapeHtml(item.title || "Untitled publication");
+      const authors = escapeHtml(getAuthors(item));
+      const year = escapeHtml(getYear(item));
+      const journal = escapeHtml(getJournal(item));
+      const doi = escapeHtml(getDoi(item));
+      const url = escapeHtml(getUrl(item));
+      const type = escapeHtml(getPublicationType(item));
+      const abstract = escapeHtml(item.abstract || "");
+      const tags = getTags(item);
 
-        return `
-          <article class="publication-card ${isFeatured(item) ? 'publication-featured' : ''}">
-            <div class="publication-year">
-              <div>${year || "—"}</div>
+      return `
+        <article class="publication-card">
+          <div class="publication-year">${year || "—"}</div>
 
-              ${
-                isFeatured(item)
-                  ? `<div class="publication-star">★</div>`
-                  : ""
-              }
-            </div>
+          <div class="publication-content">
+            <h2>${title}</h2>
 
-            <div class="publication-content">
-              <h2>${title}</h2>
+            ${authors ? `<p class="publication-authors">${authors}</p>` : ""}
+            ${journal ? `<p class="publication-journal">${journal}</p>` : ""}
+            ${type ? `<p class="publication-note">${type}</p>` : ""}
 
-              ${
-                authors
-                  ? `<p class="publication-authors" title="${fullAuthors}">
-                      ${authors}
-                    </p>`
-                  : ""
-              }
+            ${
+              abstract
+                ? `<details class="publication-abstract">
+                    <summary>Abstract</summary>
+                    <p>${abstract}</p>
+                  </details>`
+                : ""
+            }
 
-              <div class="publication-meta">
-                ${journal ? `<span>${journal}</span>` : ""}
-                ${year ? `<span>${year}</span>` : ""}
-                ${doi ? `<a href="${url}" target="_blank" rel="noopener">DOI</a>` : ""}
-              </div>
-            </div>
+            ${
+              tags.length
+                ? `<div class="publication-tags">
+                    ${tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join("")}
+                  </div>`
+                : ""
+            }
+          </div>
 
-            <div class="publication-actions">
-              ${
-                url
-                  ? `<a href="${url}" target="_blank" rel="noopener">View publication</a>`
-                  : ""
-              }
-            </div>
-          </article>
-        `;
-      }).join("")}
+          <div class="publication-actions">
+            ${
+              url
+                ? `<a href="${url}" target="_blank" rel="noopener">View publication</a>`
+                : ""
+            }
+
+            ${
+              doi
+                ? `<small>DOI: ${doi}</small>`
+                : ""
+            }
+          </div>
+        </article>
+      `;
+    }).join("")}
     `;
   }
 

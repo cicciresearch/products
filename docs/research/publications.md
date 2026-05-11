@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Scientific Publications
 
 This page collects scientific publications where **Cicci Research**, **ARKEO**, or Cicci Research instrumentation are mentioned or used.
